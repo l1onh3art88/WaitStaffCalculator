@@ -1,0 +1,1 @@
+waitstaff = angular.module('waitstaff',[]);

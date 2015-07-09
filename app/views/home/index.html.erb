@@ -1,0 +1,44 @@
+<div id = "mealdetails">
+  <h1> Enter the Meal Details </h1>
+  <form name ="mealdet"  ng-submit= "submit()" class = "form-inline"> 
+    Base Meal Price: $ <input type = 'number' ng-model = "baseprice" name="baseprice" required ng-pattern = "/^[0-9]{1,7}$/"><br>
+    Tax Rate: % <input type = 'number' ng-model="taxrate" name = "taxrate" required ng-pattern = "/^[0-9]{1,7}$/"><br>
+    Tip Percentage: % <input type = 'number' ng-model ="tipPercent" name = "tipPercent" required ng-pattern="/^[0-9]{1,7}$/"><br>
+     <input type = "submit" value = "Submit" >
+     <input type = "reset" value = "Cancel" >
+  </form>
+ 
+  <div ng-if="mealdet.$submitted" ng-messages ="mealdet.baseprice.$error" role="alert">
+    <span class = "error" ng-message="required"> Field is required </span>
+    <span class = "error" ng-message="pattern"> Must be a positive number </span>
+  </div>
+  <div ng-if="mealdet.$submitted" ng-messages ="mealdet.taxrate.$error" role="alert">
+    <span class = "error" ng-message="required"> Field is required </span>
+    <span class = "error" ng-message="pattern"> Must be a positive number </span>
+  </div>
+  <div ng-if="mealdet.$submitted" ng-messages ="mealdet.tipPercent.$error" role="alert">
+    <span class = "error" ng-message="required"> Field is required </span>
+    <span class = "error" ng-message="pattern"> Must be a positive number </span>
+  </div>
+</div>
+<div id = "customercharges">
+  
+  <h1> Customer Charges</h1>
+  <p> Subtotal {{calcsub(baseprice,taxrate) | number:2}} </p>
+  <p> Tip {{calctip(baseprice,tipPercent)  | number:2}} </p>
+  <p> Total {{calctot(baseprice,tipPercent,taxrate) | number:2}}</p>
+  
+</div>
+<div id = "earnings">
+  
+  <h1> My Earnings Info </h1>
+  <p> Tip Total: {{runningtip | number:2}}</p>
+  <p> Meal Count: {{count}}</p>
+  <p> Average Tip per Meal: {{averagetip| number:2}}</p>
+  
+</div>
+<div id = "resetbutton">
+  <button type = "button"></button>
+</div>
+
+
