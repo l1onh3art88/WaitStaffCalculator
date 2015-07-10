@@ -28,8 +28,14 @@ angular.module('waitstaff',['ngMessages'])
     }
     else{
       console.log("Invalid")
-    }
-    
-    
+    } 
+  };
+  $scope.reset = function(){
+    $scope.runningtip= 0;
+    $scope.count = 0;
+    $scope.averagetip = 0;
+    $scope.baseprice =0;
+    $scope.tipPercent=0;
+    $scope.taxrate=0;
   }
 });
